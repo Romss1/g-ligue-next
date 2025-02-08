@@ -12,7 +12,7 @@ function Button({ children, onClick, className, type }: Readonly<ButtonProps>) {
         <button
             onClick={onClick}
             type={type}
-            className={`px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 ${className}`}
+            className={`px-4 py-2 bg-stone-500 text-white rounded-md hover:bg-stone-600 focus:outline-none focus:ring-2 focus:ring-blue-500 ${className}`}
         >
             {children}
         </button>

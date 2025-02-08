@@ -4,12 +4,14 @@ import { BsEye, BsEyeSlash } from "react-icons/bs";
 
 interface PasswordInputProps {
     value: string;
+    name: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     placeholder: string;
 }
 
 function PasswordInput({
     value,
+    name,
     onChange,
     placeholder,
 }: Readonly<PasswordInputProps>) {
@@ -18,6 +20,7 @@ function PasswordInput({
         <div className="relative">
             <Input
                 type={showPassword ? "text" : "password"}
+                name={name}
                 placeholder={placeholder}
                 value={value}
                 onChange={onChange}

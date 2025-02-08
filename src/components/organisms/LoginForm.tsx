@@ -16,20 +16,22 @@ function LoginForm() {
         <form onSubmit={handleSubmit} className="space-y-4">
             <Input
                 type="email"
+                name="email"
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
             />
             <PasswordInput
                 value={password}
+                name="password"
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Password"
             />
-            <Button>Login</Button>
-            <p className="text-center">
-                Don&apos;t have an account?{" "}
-                <Link href="/register" className="text-blue-500 hover:underline">
-                    Register here
+            <Button>Se connecter</Button>
+            <p className="text-center text-stone-500">
+                Vous n&apos;avez pas de compte ?{" "}
+                <Link href="/register" className="text-stone-600 hover:underline">
+                    Inscrivez-vous
                 </Link>
             </p>
         </form>
