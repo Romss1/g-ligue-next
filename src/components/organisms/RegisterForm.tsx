@@ -4,8 +4,8 @@ import Link from "next/link";
 import PasswordInput from "@/components/molecules/PasswordInput";
 import Input from "@/components/atoms/Input";
 import Button from "@/components/atoms/Button";
-import { authService } from "@/app/(auth)/services/authService";
-import { RegisterDto } from "@/app/(auth)/dtos/authDto";
+import { authService } from "@/services/authService";
+import { RegisterDto } from "@/interfaces/authDto";
 
 const RegisterForm = () => {
     const [formData, setFormData] = useState<RegisterDto>({

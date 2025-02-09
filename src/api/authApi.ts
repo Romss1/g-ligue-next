@@ -1,5 +1,5 @@
 import axios from "axios";
-import { RegisterDto } from "../dtos/authDto";
+import { RegisterDto } from "../interfaces/authDto";
 
 const prefixAuthUrl: string = `${process.env.NEXT_PUBLIC_REACT_APP_API_URL}/auth`
 
