@@ -4,27 +4,42 @@ import Input from "../atoms/Input";
 import PasswordInput from "../molecules/PasswordInput";
 import Button from "../atoms/Button";
 import Link from "next/link";
+import { authApi } from "@/api/authApi";
+import { LoginRequest } from "@/interfaces/auth.interface";
 
 function LoginForm() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const [formData, setFormData] = useState<LoginRequest>({
+        email: "",
+        password: "",
+    });
+    
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setFormData({...formData, [e.target.name]: e.target.value});
+    }
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        // Handle login logic here
+        try {
+            const response = await authApi.loginUser(formData);
+            console.log(response);
+        } catch (error) {
+            console.error(error);
+        }
     };
+
     return (
         <form onSubmit={handleSubmit} className="space-y-4">
             <Input
                 type="email"
                 name="email"
                 placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={formData.email}
+                onChange={handleChange}
             />
             <PasswordInput
-                value={password}
+                value={formData.password}
                 name="password"
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={handleChange}
                 placeholder="Password"
             />
             <Button>Se connecter</Button>

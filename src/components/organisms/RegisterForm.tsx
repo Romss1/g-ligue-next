@@ -4,16 +4,17 @@ import Link from "next/link";
 import PasswordInput from "@/components/molecules/PasswordInput";
 import Input from "@/components/atoms/Input";
 import Button from "@/components/atoms/Button";
-import { authService } from "@/services/authService";
-import { RegisterDto } from "@/interfaces/authDto";
+import { authApi } from "@/api/authApi";
+import { RegisterRequest } from "@/interfaces/auth.interface";
 
 const RegisterForm = () => {
-    const [formData, setFormData] = useState<RegisterDto>({
+    const [formData, setFormData] = useState<RegisterRequest>({
         lastName: "",
         firstName: "",
         email: "",
         password: "",
     });
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({...formData, [e.target.name]: e.target.value});
     };
@@ -21,12 +22,12 @@ const RegisterForm = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const response = await authService.registerUser(formData);
+            const response = await authApi.registerUser(formData);
             console.log(response);
         } catch (error) {
             console.error(error);
         }
-    }
+    };
 
     return (
         <form onSubmit={handleSubmit} className="space-y-4">
