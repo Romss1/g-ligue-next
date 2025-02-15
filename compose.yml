@@ -1,6 +1,6 @@
 services:
   app:
-    container_name: node_gligue_vite
+    container_name: node_gligue_front
     build:
       context: .
       dockerfile: Dockerfile
@@ -9,4 +9,3 @@ services:
       - /app/node_modules
     ports:
       - "3001:3001"
-

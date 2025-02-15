@@ -29,5 +29,5 @@ bash:
 #-------------------------------------------------------------------------------------------------------------------------
 
 compose = docker compose -f compose.yml
-exec = docker exec -it node_gligue_vite sh
+exec = docker exec -it node_gligue_front sh
 
