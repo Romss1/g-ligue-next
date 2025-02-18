@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState } from "react";
 import Link from "next/link";
 import PasswordInput from "@/components/molecules/PasswordInput";
@@ -6,8 +7,10 @@ import Input from "@/components/atoms/Input";
 import Button from "@/components/atoms/Button";
 import { authApi } from "@/api/authApi";
 import { RegisterRequest } from "@/interfaces/auth.interface";
+import { useRouter } from "next/navigation";
 
 const RegisterForm = () => {
+    const router = useRouter();
     const [formData, setFormData] = useState<RegisterRequest>({
         lastName: "",
         firstName: "",
@@ -23,7 +26,7 @@ const RegisterForm = () => {
         e.preventDefault();
         try {
             const response = await authApi.registerUser(formData);
-            console.log(response);
+            router.push('/');
         } catch (error) {
             console.error(error);
         }

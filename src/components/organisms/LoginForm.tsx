@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState } from "react";
 import Input from "../atoms/Input";
 import PasswordInput from "../molecules/PasswordInput";
@@ -6,8 +7,10 @@ import Button from "../atoms/Button";
 import Link from "next/link";
 import { authApi } from "@/api/authApi";
 import { LoginRequest } from "@/interfaces/auth.interface";
+import { useRouter } from "next/navigation";
 
 function LoginForm() {
+    const router = useRouter();
     const [formData, setFormData] = useState<LoginRequest>({
         email: "",
         password: "",
@@ -21,7 +24,7 @@ function LoginForm() {
         e.preventDefault();
         try {
             const response = await authApi.loginUser(formData);
-            console.log(response);
+            router.push('/');
         } catch (error) {
             console.error(error);
         }
